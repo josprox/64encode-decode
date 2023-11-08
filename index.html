@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <title>Encriptación a 64</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+  <header>
+    <!-- place navbar here -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="./">64 (DEV) Code</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="./" aria-current="page">Inicio <span class="visually-hidden">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://josprox.com">Creador</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Otros links</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" href="https://github.com/josprox/">Github</a>
+                        <a class="dropdown-item" href="https://jossecurity.josprox.com">JosSecurity</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="d-flex my-2 my-lg-0">
+                <input class="form-control me-sm-2" type="text" placeholder="Buscar">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <br>
+  <main>
+    <div class="container">
+        <h1>Encriptador y desencriptador</h1>
+        <div id="result"></div>
+        <form onsubmit="encryptText(event)">
+            <div class="mb-3">
+              <label for="encriptar" class="form-label">Encripta tu texto</label>
+              <input type="text" class="form-control" id="encriptar" placeholder="Pon aquí tu texto">
+              <small id="encriptar" class="form-text text-muted">Aquí pondrás lo que quieres encriptar</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Encriptar</button>
+        </form>
+        <form onsubmit="decryptText(event)">
+            <div class="mb-3">
+              <label for="desencriptar" class="form-label">Desencripta tu texto</label>
+              <input type="text" class="form-control" id="desencriptar" placeholder="Pon aquí tu texto">
+              <small id="desencriptar" class="form-text text-muted">Aquí pondrás lo que quieres desencriptar</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Desencriptar</button>
+        </form>
+    </div>
+  </main>
+  <br>
+  <footer>
+    <!-- place footer here -->
+    <div class="alert alert-primary" role="alert">
+        <strong>Creado por:</strong> José Luis Melchor Estrada
+    </div>
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+
+  <script>
+    function encryptText(event) {
+        event.preventDefault();
+        const input = document.getElementById('encriptar');
+        const text = input.value;
+        const encryptedText = btoa(text);
+        displayResult(encryptedText);
+    }
+
+    function decryptText(event) {
+        event.preventDefault();
+        const input = document.getElementById('desencriptar');
+        const text = input.value;
+        const decryptedText = atob(text);
+        displayResult(decryptedText);
+    }
+
+    function displayResult(result) {
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              <strong>Listo:</strong> El resultado es el siguiente: "${result}"
+            </div>`;
+    }
+  </script>
+</body>
+</html>
